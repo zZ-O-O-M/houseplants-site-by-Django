@@ -1,0 +1,32 @@
+{% extends 'user_template.html' %}
+{% load static %}
+
+{% block title %} Комнатные растения {% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="plants-list col-12 align-content-center">
+        <h1 class="text-center">Список всех растений</h1>
+        {% if plants_list %}
+
+        {% for plant in plants_list %}
+        <a class="media plants-list__item list-item" href="{% url 'plants:plant_detail' plant.id %}">
+            <div class="row justify-content-md-center">
+                <div class="plants-list__img">
+                    <img src="{% static 'images/1.png' %}" class="align-self-start mr-3" alt="...">
+                </div>
+                <div class="media-body">
+                    <h5 class="mt-0">{{plant.plant_name}}</h5>
+                    <p>{{plant.plant_requirements}}</p>
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% else %}
+Растения не найдены!
+{% endif %}
+{% endblock %}

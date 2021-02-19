@@ -1,0 +1,30 @@
+{% extends 'user_template.html' %}
+{% load static %}
+
+{% block title %} {{ plant_info.plant_name }} {% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="col-12 align-content-center">
+    <div class="media">
+      <div class="row justify-content-md-center plant-info">
+        <img class="plant-info__img align-self-center" src="{% static 'images/1.png' %}" class="align-self-start mr-3" alt="...">
+        <h4 class="mt-0 align-self-center">{{ plant_info.plant_name }}</h4>
+        <div class="media-body plant-info__text">
+          <div class="plant-info__requirements">
+            <h3 class="mt-0">Описание и требования по уходу</h3>
+            <span>{{ plant_info.plant_requirements }}</span>
+          </div>
+          <div class="plant-info__type">
+            <span class="plant-info__subtitle">Тип растения: </span>{{plant_info.plant_type.plant_type_name}}
+          </div>
+          <div class="plant-info__window-type">
+            <span class="plant-info__subtitle">Подходящее окно: </span> {{plant_info.plant_window_type.window_type_name}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

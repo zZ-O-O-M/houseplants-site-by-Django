@@ -1,0 +1,42 @@
+{% extends 'admin_template.html' %}
+{% load static %}
+
+{% block title %} Комнатные растения {% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="plants-list col-12 align-content-center">
+        <h1 class="text-center">Список всех растений</h1>
+        {% if plants_list %}
+
+        {% for plant in plants_list %}
+        <div class="list-item">
+            <a class="media plants-list__item" href="{% url 'plants:admin_plant_detail' plant.id %}">
+                <div class="row justify-content-md-center">
+                    <div class="plants-list__img">
+                        <img src="{% static 'images/1.png' %}" class="align-self-start mr-3" alt="...">
+                    </div>
+                    <div class="media-body">
+                        <h5 class="mt-0">{{plant.plant_name}}</h5>
+                        <p>{{plant.plant_requirements}}</p>
+                    </div>
+                </div>
+            </a>
+            <div class="list-item__buttons">
+                <div class="list-item__button">
+                    <a href="#" class="btn-danger">Удалить</a>
+                </div>
+                <div class="list-item__button">
+                    <a href="admin-editPlant.html" class="btn-success">Изменить</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+
+{% else %}
+Растения не найдены!
+{% endif %}
+{% endblock %}
