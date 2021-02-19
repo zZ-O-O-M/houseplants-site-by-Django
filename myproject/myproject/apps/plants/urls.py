@@ -23,4 +23,5 @@ urlpatterns = [
     # Actions
     path('admin/<int:plant_id>/save-data-action/', views.admin_save_plant_data, name = 'admin_save_plant_data'),
     path('admin/add-plant-action/', views.admin_add_plant_action, name = 'admin_add_plant_action'),
+    path('admin/<int:plant_id>/delete-plant-action/', views.admin_delete_plant_action, name = 'admin_delete_plant_action')
 ]

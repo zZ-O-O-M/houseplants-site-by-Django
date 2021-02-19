@@ -62,7 +62,12 @@ def admin_save_plant_data(request, plant_id):
 
 
 def admin_add_plant_page(request):
-    return render(request, 'plants/admin/add_plant.html')
+    # Data
+    all_plant_types = PlantType.objects.all()
+    all_window_types = WindowType.objects.all()
+
+    return render(request, 'plants/admin/add_plant.html', {'all_plant_types': all_plant_types,
+                                                           'all_window_types': all_window_types})
 
 
 def admin_add_plant_action(request):
@@ -76,5 +81,16 @@ def admin_add_plant_action(request):
 
     # Save new data
     plant_info.save()
+
+    return HttpResponseRedirect(reverse('plants:admin_list'))
+
+
+def admin_delete_plant_action(request, plant_id):
+    try:
+        plant = Plant.objects.get(id = plant_id)
+    except:
+        raise Http404("Статья не найдена!")
+
+    plant.delete()
 
     return HttpResponseRedirect(reverse('plants:admin_list'))

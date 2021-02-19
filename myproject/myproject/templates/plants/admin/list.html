@@ -24,10 +24,10 @@
             </a>
             <div class="list-item__buttons">
                 <div class="list-item__button">
-                    <a href="#" class="btn-danger">Удалить</a>
+                    <a href="{% url 'plants:admin_delete_plant_action' plant.id %}" class="btn-danger">Удалить</a>
                 </div>
                 <div class="list-item__button">
-                    <a href="admin-editPlant.html" class="btn-success">Изменить</a>
+                    <a href="{% url 'plants:admin_plant_detail' plant.id %}" class="btn-success">Изменить</a>
                 </div>
             </div>
         </div>
