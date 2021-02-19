@@ -1,7 +1,7 @@
 {% extends 'admin_template.html' %}
 {% load static %}
 
-{% block title %} {{ plant_info.plant_name }} {% endblock %}
+{% block title %} Добавить новое растение {% endblock %}
 
 {% block content %}
 <div class="container edit-plant-container">
@@ -9,24 +9,20 @@
         <div class="media">
             <div class="row justify-content-md-center plant-info">
                 <img class="plant-info__img align-self-start" src="{% static 'images/1.png' %}" alt="...">
-                <form method="POST" action="{% url 'plants:admin_save_plant_data' plant_info.id %}" class="plant-edit-form">
+                <form method="POST" action="{% url 'plants:admin_add_plant_action' %}" class="plant-edit-form">
 
                     {% csrf_token %}
 
                     <div class="form-group">
                         <label for="plantNameField">Наименование</label>
                         <input name="plant_name" type="text" class="form-control" id="plantNameField"
-                               value="{{plant_info.plant_name}}">
+                               value="">
                     </div>
                     <div class="form-group">
                         <label for="plantTypeField">Тип растения</label>
                         <select class="form-control" id="plantTypeField" name="plant_type">
                             {% for plant_type in all_plant_types %}
-                            {% if plant_type.id == plant_info.plant_type.id %}
-                            <option selected value="{{plant_type.id}}">{{plant_type.plant_type_name}}</option>
-                            {% else %}
                             <option value="{{plant_type.id}}">{{plant_type.plant_type_name}}</option>
-                            {% endif %}
                             {% endfor %}
                         </select>
                     </div>
@@ -34,11 +30,7 @@
                         <label for="plantWindowField">Подходящее окно для освещения</label>
                         <select class="form-control" id="plantWindowField" name="plant_window_type">
                             {% for window_type in all_window_types %}
-                            {% if window_type.id == plant_info.plant_window_type.id %}
-                            <option selected value="{{window_type.id}}">{{window_type.window_type_name}}</option>
-                            {% else %}
                             <option value="{{window_type.id}}">{{window_type.window_type_name}}</option>
-                            {% endif %}
                             {% endfor %}
                         </select>
                     </div>
@@ -49,7 +41,7 @@
                     </div>
 
                     <div class="form-group edit-plant-container__button-block">
-                        <button type="submit" class="btn btn-primary">Сохранить</button>
+                        <button type="submit" class="btn btn-primary">Добавить</button>
                     </div>
                 </form>
             </div>

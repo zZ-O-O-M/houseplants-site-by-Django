@@ -19,10 +19,13 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" href="{% url 'plants:list' %}">Список всех растений</a>
+                <a class="nav-link" href="{% url 'plants:admin_list' %}">Список всех растений</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Сделать заказ</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'plants:admin_add_plant_page' %}">Добавить растение</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'plants:list' %}">Вид пользователя</a>
